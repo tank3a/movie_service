@@ -1,19 +1,27 @@
 import Button from "./Button";
 import {useState, useEffect } from "react";
 
-function App() {
-  const [counter, setCounter] = useState(0);
-  const onClick = () => setCounter((prev) => prev + 1);
-  console.log("I run all the time");
+function Hello() {
+  function byFn() {
+    console.log("bye");
+  }
+  function hiFn() {
+    console.log("created");
+      return byFn;
+  }
+  useEffect(hiFn, []);
+  return (<h1>Hello</h1>);
+}
 
-  const iRun = () => {
-    console.log("I run only once");
+function App() {
+  const [showing, setShow] = useState(true);
+  const onClick = () => {
+    setShow(!showing);
   };
-  useEffect(iRun);
   return (
     <div>
-      <h1>{counter}</h1>
-      <button onClick={onClick}>UP</button>
+      {showing ? <Hello /> : null};
+      <button onClick={onClick}>{showing ? "Hide" : "Show"}</button>
     </div>
 
   );
