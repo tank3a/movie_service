@@ -8,7 +8,8 @@ function Coin() {
         setCoins(json);
         setLoading(false);
     });
-    }, [])
+    }, []);
+    
     return(
       <div>
         <h1>Coins</h1>
