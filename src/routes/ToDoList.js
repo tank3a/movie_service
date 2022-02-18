@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 function ToDoList() {
     const [toDo, setToDo] = useState("");
@@ -22,6 +23,8 @@ function ToDoList() {
         </form>
         <hr/>
         {toDos.map((item, index) => <li key={index}>{item}</li>)}
+        <Link to={`${process.env.PUBLIC_URL}/`}>Go Back Home</Link>
+
       </div>
     )
   

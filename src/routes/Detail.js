@@ -32,7 +32,7 @@ function Detail() {
                 </ul>
                 <p>{movie.description_full}</p>
                 <b>
-                    <Link to="/">Go Back Home</Link>
+                    <Link to={`${process.env.PUBLIC_URL}/`}>Go Back Home</Link>
                 </b>
             </div>}
         </div>

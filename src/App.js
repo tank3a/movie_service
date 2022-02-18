@@ -11,13 +11,13 @@ function App() {
         <Route path="/movie/:id">
           <Detail />
         </Route>
-        <Route path="/coins" >
+        <Route exact path={`${process.env.PUBLIC_URL}/coins`} element={Coin}>
           <Coin />
         </Route>
-        <Route path="/todos" >
+        <Route exact path={`${process.env.PUBLIC_URL}/todos`} element={ToDoList}>
           <ToDoList />
         </Route>
-        <Route exact path="/" >
+        <Route exact path={`${process.env.PUBLIC_URL}/`} element={MovieApp} >
           <MovieApp />
         </Route>
       </Switch>

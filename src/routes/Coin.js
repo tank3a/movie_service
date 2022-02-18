@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 function Coin() {
     const [loading, setLoading] = useState(true);
@@ -20,7 +21,8 @@ function Coin() {
         {loading ? <strong>Loading</strong> : <select>
           {coins.map((coin) => <option key={coin.id}>{coin.name} ({coin.symbol}) : ${Math.trunc(10 * coin.quotes.USD.price)/10}</option>)}
         </select>}
-  
+
+        <Link to={`${process.env.PUBLIC_URL}/`}>Go Back Home</Link>
       </div>
     )
   }
