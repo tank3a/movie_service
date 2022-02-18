@@ -5,18 +5,21 @@ function Detail() {
     const {id} = useParams();
     const [loading, setLoading] = useState(true);
     const [movie, setMovie] = useState({});
-    
+    const [genres, setGenres] = useState([]);
+
+    const getMovie = async () => {
+        const json = await (
+            await fetch(`https://yts.mx/api/v2/movie_details.json?movie_id=${id}`)
+        ).json();
+        setMovie(json.data.movie);
+        setGenres(json.data.movie.genres);
+        setLoading(false);
+    }
 
     useEffect(() => {
-        const getMovie = async () => {
-            const res = await fetch(`https://yts.mx/api/v2/movie_details.json?movie_id=${id}`);
-            const json = await res.json();
-            setMovie(json.data.movie);
-            console.log(json.data.movie);
-            setLoading(false);
-        }
         getMovie();
-      }, [id]);
+      }, [])
+      
     return (
         <div>
             {loading ? <h3>Loading</h3> :
@@ -25,7 +28,7 @@ function Detail() {
                 <h4>Created At : {movie.year}</h4>
                 <img src={movie.medium_cover_image} alt="Loading"/>
                 <ul>
-                    {movie.genres.map((genre) => <li key={genre}>{genre}</li>)}
+                    {genres.map((genre) => <li key={genre}>{genre}</li>)}
                 </ul>
                 <p>{movie.description_full}</p>
                 <b>

@@ -3,11 +3,15 @@ import { useState, useEffect } from "react";
 function Coin() {
     const [loading, setLoading] = useState(true);
     const [coins, setCoins] = useState([]);
+    const getCoins = async () => {
+      const json = await (
+        await fetch("https://api.coinpaprika.com/v1/tickers")
+      ).json();
+      setCoins(json);
+      setLoading(false);
+    }
     useEffect(()=> {
-      fetch("https://api.coinpaprika.com/v1/tickers").then(response => response.json()).then(json => {
-        setCoins(json);
-        setLoading(false);
-    });
+      getCoins();
     }, []);
     
     return(
