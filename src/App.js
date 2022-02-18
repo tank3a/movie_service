@@ -11,13 +11,13 @@ function App() {
         <Route path="/movie/:id">
           <Detail />
         </Route>
-        <Route path="/coins">
+        <Route path="/coins" >
           <Coin />
         </Route>
-        <Route path="todos">
+        <Route path="/todos" >
           <ToDoList />
         </Route>
-        <Route path="/" >
+        <Route exact path="/" >
           <MovieApp />
         </Route>
       </Switch>
